@@ -63,7 +63,7 @@ function ListaDAO() {
         return this.listas;
     };
 
-    this.novaTarefa = function (descrcao, listaID) {
+    this.novaTarefa = function (descricao, listaID) {
         //cria id da tarefa
         var tarefaID = "tarefa-" + this.listas[listaID].numeroDeTarefas;
         //cria objeto da tarefa
@@ -104,7 +104,7 @@ function ListaDAO() {
         }
     };
 
-    
+
     this.apagarTarefa = function () {};
     this.getTarefas = function () {};
 
