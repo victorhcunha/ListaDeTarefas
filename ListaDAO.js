@@ -22,7 +22,7 @@ function ListaDAO() {
     
     this.renomearLista = function (listaID, novoNome) {
         //verifica se a lista existe
-        if (this.listas.hasOwnProperty(listaIF)){
+        if (this.listas.hasOwnProperty(listaIF)) {
             //renomear com novo nome
             this.listas[listaID].nome = novoNome;
             console.log();
@@ -38,7 +38,25 @@ function ListaDAO() {
             }
         }
     };
-    this.apagarLista = function () {};
+
+    this.apagarLista = function (listaID) {
+        //verifica se lista existe
+        if (this.listas.hasOwnProperty(listaID)){
+            var nomeDaLista = this.listas[listaID].nome;
+            //exclui a lista
+            delete this.listas[lista.ID];
+
+            return{
+                sucess: true,
+                message: "Lista \'" + nomeDaLista + "\' apagada com sucesso."
+            }
+        } else {
+            return {
+                sucess: false,
+                message: "Lista não pode ser encontrada."
+            }
+        }
+    };
     this.getListas = function () {};
     this.novaTarefa = function () {};
     this.toggleTarefa = function () {};
