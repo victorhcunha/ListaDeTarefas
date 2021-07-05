@@ -89,11 +89,11 @@ function ListaDAO() {
             //encontra a tarefa
             if (this.listas[listaID].tarefas[i].id == tarefaID) {
                 //mudar valor da propriedade "completa"
-                this.listas[listaID].tarefas[i].completa = !this.listas[listaID].tarefas[i].completa                this.listas[listaID].tarefas[i].completa;
+                this.listas[listaID].tarefas[i].completa = !this.listas[listaID].tarefas[i].completa;
 
                 return {
                     sucess: true,
-                    message: "Tarefa \'" + tarefaID + "\': " + this.listas[listaID].tarefas[i].completa;
+                    message: "Tarefa \'" + tarefaID + "\': " + this.listas[listaID].tarefas[i].completa
                 };
             };
 
