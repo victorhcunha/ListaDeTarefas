@@ -57,7 +57,12 @@ function ListaDAO() {
             }
         }
     };
-    this.getListas = function () {};
+
+    this.getListas = function () {
+        //retornar as listas
+        return this.listas;
+    };
+    
     this.novaTarefa = function () {};
     this.toggleTarefa = function () {};
     this.apagarTarefa = function () {};
