@@ -105,7 +105,20 @@ function ListaDAO() {
     };
 
 
-    this.apagarTarefa = function () {};
+    this.apagarTarefa = function (listaID, tarefaID) {
+        //percorre as tarefas da lista
+        for (var i =0; i < this.listas[listaID].tarefas.length; i++) {
+            //encontra a tarefa
+            if (this.listas[listaID].tarefas[i].id == tarefaID) {
+                //apaga a tarefa
+                this.listas[listaID].tarefas.splice(i,1);
+                
+                console.log("ListaDAD> Tarefa \'%s\' apagada com sucesso.", tarefaID);
+                break
+            }
+        }
+    };
+    
     this.getTarefas = function () {};
 
 }
