@@ -118,8 +118,10 @@ function ListaDAO() {
             }
         }
     };
-    
-    this.getTarefas = function () {};
+
+    this.getTarefas = function (listaID) {
+        return this.listas[listaID].tarefas;
+    };
 
 }
 
