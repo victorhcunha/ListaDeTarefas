@@ -20,7 +20,24 @@ function ListaDAO() {
         }
     };
     
-    this.renomearLista = function () {};
+    this.renomearLista = function (listaID, novoNome) {
+        //verifica se a lista existe
+        if (this.listas.hasOwnProperty(listaIF)){
+            //renomear com novo nome
+            this.listas[listaID].nome = novoNome;
+            console.log();
+
+            return{
+                sucess: true,
+                message: "Lista renomeada para \'" + novoNome + "\'."
+            }
+        } else {
+            return{
+                sucess: false,
+                mesage: "Lista não pode ser encontrada."
+            }
+        }
+    };
     this.apagarLista = function () {};
     this.getListas = function () {};
     this.novaTarefa = function () {};
