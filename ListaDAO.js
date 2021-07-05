@@ -62,8 +62,26 @@ function ListaDAO() {
         //retornar as listas
         return this.listas;
     };
+
+    this.novaTarefa = function (descrcao, listaID) {
+        //cria id da tarefa
+        var idTarefa = "tarefa-" + this.listas[listaID].numeroDeTarefas;
+        //cria objeto da tarefa
+        var tarefa = {
+            id: idTarefa,
+            descricao: descricao,
+            completa: false
+        };
+        //adiciona tarefa na lista de tarefas
+        this.listas[listaID].tarefas.push(tarefa);
+        this.listas[listaID].numeroDeTarefas += 1;
+        
+        return {
+            sucess: true,
+            message: "Tarefa adicionada na lista " + this.listas[listaID].nome
+        }
+    };
     
-    this.novaTarefa = function () {};
     this.toggleTarefa = function () {};
     this.apagarTarefa = function () {};
     this.getTarefas = function () {};
