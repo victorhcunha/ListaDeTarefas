@@ -65,10 +65,10 @@ function ListaDAO() {
 
     this.novaTarefa = function (descrcao, listaID) {
         //cria id da tarefa
-        var idTarefa = "tarefa-" + this.listas[listaID].numeroDeTarefas;
+        var tarefaID = "tarefa-" + this.listas[listaID].numeroDeTarefas;
         //cria objeto da tarefa
         var tarefa = {
-            id: idTarefa,
+            id: tarefaID,
             descricao: descricao,
             completa: false
         };
@@ -81,8 +81,30 @@ function ListaDAO() {
             message: "Tarefa adicionada na lista " + this.listas[listaID].nome
         }
     };
+
+    this.toggleTarefa = function (listaID, tarefaID) {
+        //funcao para alternar tarefa entre completa "true" ou "false"
+        //percorre lista de tarefas
+        for (var i = 0; i < this.listas[listaID].tarefas.length; i++) {
+            //encontra a tarefa
+            if (this.listas[listaID].tarefas[i].id == tarefaID) {
+                //mudar valor da propriedade "completa"
+                this.listas[listaID].tarefas[i].completa = !this.listas[listaID].tarefas[i].completa                this.listas[listaID].tarefas[i].completa;
+
+                return {
+                    sucess: true,
+                    message: "Tarefa \'" + tarefaID + "\': " + this.listas[listaID].tarefas[i].completa;
+                };
+            };
+
+            return {
+                sucess: false,
+                message: "Tarefa \'" + tarefaID + "\' não encontrada."
+            }
+        }
+    };
+
     
-    this.toggleTarefa = function () {};
     this.apagarTarefa = function () {};
     this.getTarefas = function () {};
 
