@@ -3,7 +3,6 @@ var express = require("express");
 var bodyParser = require("body-parser");
 //importa listaDAO
 var listaDao = require("./listaDAO");
-const { response } = require("express");
 
 //iniciar aplicação express
 var app = express();
