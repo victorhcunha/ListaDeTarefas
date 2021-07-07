@@ -3,6 +3,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 //importa listaDAO
 var listaDao = require("./listaDAO");
+const { response } = require("express");
 
 //iniciar aplicação express
 var app = express();
@@ -46,6 +47,57 @@ app.delete("/lista/:id_lista", function (request, response) {
     response.end();
 });
 
+//listar todas as listas
+app.get("/lista", function(request, response){
+    response.status(200);
+    response.json(listaDao.getListas());
+    response.end();
+});
+
+//criar tarefa em lista
+app.post("/lista/:id_lista", function(request,response){
+    //pega as informações da requisição
+    var idDaLista = request.params.id_lista;
+    var descricaoDaTarefa = request.body.descricao;
+    //adiciona tarefa na lista de tarefas
+    var result = listaDao.novaTarefa(descricaoDaTarefa, idDaLista);
+    response.status(200);
+    response.json(result);
+    response.end();
+});
+
+//alterar tarefa para completa ou nao
+app.put("/lista/>id_lista/tarefa/id:tarefa", function (request, response) {
+    //pega informações da requisição
+    var idDaLista = request.params.id_lista;
+    var idDaTarefa = request.params.id_tarefa;
+    //altera o estado da tarefa
+    var result = listaDao.toggleTarefa(idDaLista, idDaTarefa);
+    response.status(200);
+    response.json(result);
+    response.end();
+});
+
+//apagar tarefa em uma lista
+app.delete("/lista/:id_lista/tarefa/:id_tarefa", function (request, response) {
+    //pega as informações da requisição
+    var idDaLista = request.params.id_lista;
+    var idDaTarefa = request.params.id_tarefa;
+    //apaga a tarefa da lista de tarefas
+    var result = listaDao.apagarTarefa(idDaLista, idDaTarefa);
+    response.status(200);
+    response.json(result);
+    response.end();
+});
+
+//listar tarefas de uma lista
+app.get("/lista/:id_lista/tarfe", function (request, response) {
+    //pegar o identificador da lista na rota
+    var idDaLista = request.params.id_lista;
+    response.status(200);
+    response.json(listaDao.getListas(idDaLista));
+    response.end();
+});
 
 
 
